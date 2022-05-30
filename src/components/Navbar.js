@@ -4,7 +4,7 @@ import './Navbar.css'
 export default function Navbar() {
   return (
     <div className='navbar-container'>
-      <a href='/home'>Petty cash manager</a> 
+      <a href='/home'>PETTY CASH MANAGER</a> 
     </div>
   )
 }

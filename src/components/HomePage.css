@@ -1,5 +1,5 @@
 .homepage-container{
-    border: 2px solid black;
+    /* border: 2px solid black; */
     height: 100%;
     width: 100%;
     display: flex;
@@ -10,7 +10,7 @@
     height: 100%;
     display: flex;
     flex-wrap: wrap;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 .card{
     transform: scale(0.7);

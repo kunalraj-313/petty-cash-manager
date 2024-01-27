@@ -39,10 +39,10 @@ export default function Funds({type,rows,setRows,total,setTotal}) {
   return (
     <div>
         {
-            type=='add' ? (<div className='input-fields' style={{justifyContent:"space-evenly"}}>
+            type==='add' ? (<div className='input-fields' style={{justifyContent:"space-evenly"}}>
                 <TextField type='number' id="outlined-basic" label="Amount" variant="outlined" onChange={(e)=>setAmount(e.target.value)}/>
                 <Button style={{width:"20%",alignSelf:"center"}} variant='contained' onClick={handleAdd}>Add</Button>
-            </div>) : type=='transfer' ? (<div className='input-fields'>
+            </div>) : type==='transfer' ? (<div className='input-fields'>
                 <TextField type='number' id="outlined-basic" label="Amount" variant="outlined" value={transferAmount} onChange={(e)=>setTransferAmount(e.target.value)}/>
                 <TextField type='text' id="outlined-basic" label="Reciever" variant="outlined" onChange={(e)=>setReciever(e.target.value)}/>
                 <Button style={{width:"25%",alignSelf:"center"}} variant='contained' onClick={handleTransfer}>Transfer</Button>

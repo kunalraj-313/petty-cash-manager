@@ -1,6 +1,6 @@
 import React from 'react'
 import DataPage from './components/DataPage';
-import HomePage from './components/HomePage';
+// import HomePage from './components/HomePage';
 import Navbar from './components/Navbar';
 
 function App() {

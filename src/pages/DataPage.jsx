@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { DataGrid } from '@mui/x-data-grid';
-import './DataPage.css'
+import '../styles/DataPage.css'
 import { Button } from '@mui/material';
-import Funds from './Funds';
+import Funds from '../components/Funds';
 
 export default function DataPage() {
   const [addToggle,setAddToggle]=useState(false)

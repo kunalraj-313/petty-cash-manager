@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Button, TextField } from '@mui/material'
-import './DataPage.css'
+import '../styles/DataPage.css'
 
 export default function Funds({type,rows,setRows,total,setTotal}) {
 

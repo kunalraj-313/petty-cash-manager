@@ -1,5 +1,5 @@
 import React from 'react'
-import '../styles'
+import 'styles/HomePage.css'
 import { Card,CardContent,CardMedia,CardActionArea,Typography} from '@mui/material'
 
 export default function HomePage() {

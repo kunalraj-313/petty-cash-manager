@@ -2,8 +2,8 @@ import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { TextField, Button, Container, Typography } from '@material-ui/core';
-
+import { TextField, Button, Container, Typography } from '@mui/material';
+import useLogin from 'hooks/useLogin';
 // Zod schema for form validation
 const schema = z.object({
   email: z.string().email({ message: "Invalid email address" }),
@@ -15,8 +15,16 @@ export default function LoginPage() {
     resolver: zodResolver(schema),
   });
 
-  const onSubmit = data => {
-    console.log(data);
+  const {mutateAsync:login,isLoading}=useLogin()
+
+  const onSubmit = async(data) => {
+    console.log('data: ',data)
+    const {email,password} = data
+    try {
+        await login({email,password})
+    } catch(error) {
+      // throw Error(`Login failed.Reason : ${error}`)
+    }
   };
 
   return (
@@ -58,7 +66,7 @@ export default function LoginPage() {
             />
           )}
         />
-        <Button type="submit" variant="contained" color="primary" fullWidth>
+        <Button type="submit" variant="contained" color="primary" fullWidth disabled={isLoading}>
           Log In
         </Button>
       </form>

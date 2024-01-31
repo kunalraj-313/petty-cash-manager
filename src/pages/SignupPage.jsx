@@ -2,7 +2,8 @@ import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { TextField, Button, Container, Typography } from '@material-ui/core';
+import { TextField, Button, Container, Typography } from '@mui/material';
+import useSignup from 'hooks/useSignup';
 
 const schema = z.object({
   email: z.string().email({ message: "Invalid email address" }),
@@ -14,13 +15,19 @@ const schema = z.object({
 });
 
 export default function SignupPage() {
-  const { control, handleSubmit, formState: { errors } } = useForm({
+  const { getValues,control, handleSubmit, formState: { errors } } = useForm({
     resolver: zodResolver(schema),
   });
 
-  const onSubmit = data => {
-    console.log(data);
-    // Handle form submission
+  const {mutateAsync : userSignUp,isLoading,isError} = useSignup()
+
+  const onSubmit = async(data) => {
+    try {
+        await userSignUp(getValues('email'),getValues('password'))
+    } catch (error) {
+      
+    }
+   
   };
 
   return (
@@ -28,7 +35,9 @@ export default function SignupPage() {
       <Typography variant="h4" component="h1" gutterBottom>
         Signup
       </Typography>
-      <form onSubmit={handleSubmit(onSubmit)} noValidate>
+      {
+      !isError ? (
+        <form onSubmit={handleSubmit(onSubmit)} noValidate>
         <Controller
           name="email"
           control={control}
@@ -79,10 +88,17 @@ export default function SignupPage() {
             />
           )}
         />
-        <Button type="submit" variant="contained" color="primary" fullWidth>
+        <Button type="submit" variant="contained" color="primary" fullWidth disabled={isLoading}>
           Sign Up
         </Button>
       </form>
+      ) : (
+        <div>
+          An error occurred please try again
+        </div>
+      )
+      }
+ 
     </Container>
   );
 }

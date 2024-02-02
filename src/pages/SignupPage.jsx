@@ -15,15 +15,16 @@ const schema = z.object({
 });
 
 export default function SignupPage() {
-  const { getValues,control, handleSubmit, formState: { errors } } = useForm({
+  const { control, handleSubmit, formState: { errors } } = useForm({
     resolver: zodResolver(schema),
   });
 
   const {mutateAsync : userSignUp,isLoading,isError} = useSignup()
 
   const onSubmit = async(data) => {
+    const {email,password} = data
     try {
-        await userSignUp(getValues('email'),getValues('password'))
+        await userSignUp({email,password})
     } catch (error) {
       
     }

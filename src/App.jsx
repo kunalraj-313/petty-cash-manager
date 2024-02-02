@@ -16,9 +16,10 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
     <div className="App" style={{height:"100vh",width:"100%"}}>
-      <Navbar/>
 
       <BrowserRouter>
+      <Navbar/>
+
       <Routes>
         <Route path='/' element={user ? <HomePage/> :<Navigate to='/login'/>} />
         <Route path='/login' element={!user ? <LoginPage/> :<Navigate to='/'/>} />

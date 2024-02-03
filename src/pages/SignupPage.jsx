@@ -7,6 +7,7 @@ import useSignup from 'hooks/useSignup';
 
 const schema = z.object({
   email: z.string().email({ message: "Invalid email address" }),
+  name:z.string().min(3),
   password: z.string().min(6, { message: "Password must be at least 6 characters long" }),
   confirmPassword: z.string(),
 }).refine(data => data.password === data.confirmPassword, {
@@ -52,6 +53,22 @@ export default function SignupPage() {
               margin="normal"
               error={!!errors.email}
               helperText={errors.email ? errors.email.message : ''}
+            />
+          )}
+        />
+              <Controller
+          name="name"
+          control={control}
+          defaultValue=""
+          render={({ field }) => (
+            <TextField
+              {...field}
+              label="Name"
+              variant="outlined"
+              fullWidth
+              margin="normal"
+              error={!!errors.name}
+              helperText={errors.name ? errors.name.message : ''}
             />
           )}
         />

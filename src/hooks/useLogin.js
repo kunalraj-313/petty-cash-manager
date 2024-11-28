@@ -5,9 +5,9 @@ export default function useLogin() {
   const { dispatch } = useAuthContext();
 
   async function loginUser(email, password) {
-    console.log(`${process.env.REACT_APP_API_ENDPOINT}`)
+    console.log(`${process.env.REACT_APP_API_ENDPOINT}`);
     const response = await fetch(
-      `${process.env.REACT_APP_API_ENDPOINT}/cash-manager/user/login`,
+      `http://localhost:5000/cash-manager/user/login`,
       {
         method: "POST",
         headers: {
@@ -29,5 +29,5 @@ export default function useLogin() {
 
     return response.json();
   }
-  return useMutation(( {email, password }) => loginUser(email, password));
+  return useMutation(({ email, password }) => loginUser(email, password));
 }

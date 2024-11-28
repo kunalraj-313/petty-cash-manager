@@ -1,18 +1,16 @@
-.homepage-container{
-    /* border: 2px solid black; */
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
+.homepage-container {
+  /* border: 2px solid black; */
+  height: 100%;
+  width: 100%;
+  display: flex;
 }
-.cards-container{
-    width: 80%;
-    height: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    /* border: 1px solid red; */
+.cards-container {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  /* border: 1px solid red; */
 }
-.card{
-    transform: scale(0.7);
-    
+.card {
+  transform: scale(0.7);
 }
